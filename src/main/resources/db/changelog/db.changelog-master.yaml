@@ -1,0 +1,106 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: spring-ai-mcp
+      changes:
+        - createTable:
+            tableName: tb_mcp_server
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: code
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: name
+                  type: VARCHAR(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(500)
+              - column:
+                  name: config_json
+                  type: TEXT
+              - column:
+                  name: enable
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  defaultValue: 'off'
+              - column:
+                  name: check_time
+                  type: TIMESTAMP
+              - column:
+                  name: create_time
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: update_time
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 2
+      author: spring-ai-mcp
+      changes:
+        - createTable:
+            tableName: tb_mcp_tool
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: code
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: server_code
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(500)
+              - column:
+                  name: input_schema
+                  type: TEXT
+              - column:
+                  name: enable
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  defaultValue: 'off'
+              - column:
+                  name: check_time
+                  type: TIMESTAMP
+              - column:
+                  name: create_time
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: update_time
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
